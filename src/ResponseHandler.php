@@ -21,17 +21,6 @@ class ResponseHandler implements ResponseInterface
         $this->response = new Response($statusCode, $headers, $body);
     }
 
-    public function __invoke(array|string $content = '', array $headers = [], int $status = 200): ResponseInterface
-    {
-        $this->response = new Response($status, $headers);
-
-        if (is_array($content)) {
-            return $this->response->json($content);
-        }
-
-        return $this->response->plainText($content);
-    }
-
     public function getStatusCode(): int
     {
         return $this->response->getStatusCode();

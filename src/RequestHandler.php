@@ -5,14 +5,12 @@ declare(strict_types=1);
 namespace Atyalpa\Http;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\UriInterface;
 use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\UriInterface;
 
 class RequestHandler implements ServerRequestInterface
 {
-    public function __construct(private ServerRequestInterface $request)
-    {
-    }
+    public function __construct(private ServerRequestInterface $request) {}
 
     public function getProtocolVersion(): string
     {

@@ -1,7 +1,6 @@
 <?php
 
 use Atyalpa\Http\RequestHandler;
-use http\Encoding\Stream;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
@@ -10,7 +9,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
-use function PHPUnit\Framework\assertEquals;
 
 #[\PHPUnit\Framework\Attributes\CoversClass(RequestHandler::class)]
 class RequestHandlerTest extends TestCase

@@ -17,20 +17,6 @@ class ResponseHandlerTest extends TestCase
     }
 
     #[Test]
-    public function it_is_invokable_and_returns_instance_of_response_interface(): void
-    {
-        $this->assertInstanceOf(
-            ResponseInterface::class,
-            (new ResponseHandler())(['foo' => 'bar'])
-        );
-
-        $this->assertInstanceOf(
-            ResponseInterface::class,
-            (new ResponseHandler())('Hello World')
-        );
-    }
-
-    #[Test]
     public function it_returns_response_status_code(): void
     {
         $response = new ResponseHandler(200);
