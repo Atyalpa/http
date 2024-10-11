@@ -10,7 +10,9 @@ use Psr\Http\Message\UriInterface;
 
 class RequestHandler implements ServerRequestInterface
 {
-    public function __construct(private ServerRequestInterface $request) {}
+    public function __construct(private ServerRequestInterface $request)
+    {
+    }
 
     public function getProtocolVersion(): string
     {
@@ -154,7 +156,7 @@ class RequestHandler implements ServerRequestInterface
         return $this;
     }
 
-    public function getParsedBody(): array
+    public function getParsedBody(): null|array|object
     {
         return $this->request->getParsedBody();
     }

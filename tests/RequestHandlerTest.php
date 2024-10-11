@@ -3,10 +3,8 @@
 use Atyalpa\Http\RequestHandler;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\Test;
-
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ServerRequestInterface;
-
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 
@@ -313,6 +311,26 @@ class RequestHandlerTest extends TestCase
             ->willReturn(['foo' => 'bar']);
 
         $this->assertEquals(['foo' => 'bar'], $this->requestHandler->getParsedBody());
+    }
+
+    #[Test]
+    public function it_returns_parse_body_with_no_data(): void
+    {
+        $this->serverRequestMock->expects($this->once())
+            ->method('getParsedBody')
+            ->willReturn(null);
+
+        $this->assertEquals(null, $this->requestHandler->getParsedBody());
+    }
+
+    #[Test]
+    public function it_returns_parse_body_with_object(): void
+    {
+        $this->serverRequestMock->expects($this->once())
+            ->method('getParsedBody')
+            ->willReturn((object) ['foo' => 'bar']);
+
+        $this->assertEquals((object) ['foo' => 'bar'], $this->requestHandler->getParsedBody());
     }
 
     #[Test]
